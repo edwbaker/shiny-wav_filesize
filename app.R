@@ -1,5 +1,6 @@
 library(shiny)
 library(sonicscrewdriver)
+library(schite)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -70,7 +71,8 @@ ui <- fluidPage(
         mainPanel(
           verbatimTextOutput("human"),
           textOutput("bytes"),
-          textOutput("bits")
+          textOutput("bits"),
+          htmlOutput("cite")
         )
     )
 )
@@ -89,6 +91,11 @@ server <- function(input, output) {
   output$bits <- renderText(paste({bits()}, "bits"))
   output$bytes <- renderText(paste({convert2bytes(bits())}, "bytes"))
   output$human <- renderText({humanBytes(bits())})
+
+  cite <- list(
+    cite_r_package("sonicscrewdriver")
+  )
+  output$cite <- citationUI(cite, title="Calculated using SonicScrewdriveR")
 }
 
 # Run the application
