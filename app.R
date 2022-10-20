@@ -88,9 +88,10 @@ server <- function(input, output) {
       duration.unit = input$durationUnit
       )
     * input$repeats)
+  bytes <- reactive(convert2bytes(bits()))
   output$bits <- renderText(paste({bits()}, "bits"))
-  output$bytes <- renderText(paste({convert2bytes(bits())}, "bytes"))
-  output$human <- renderText({humanBytes(bits())})
+  output$bytes <- renderText(paste({bytes()}, "bytes"))
+  output$human <- renderText({humanBytes(bytes())})
 
   cite <- list(
     cite_r_package("sonicscrewdriver")
