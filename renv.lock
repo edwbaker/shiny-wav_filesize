@@ -1764,13 +1764,13 @@
     },
     "sonicscrewdriver": {
       "Package": "sonicscrewdriver",
-      "Version": "0.0.7",
+      "Version": "0.0.8.9000",
       "Source": "Cellar",
       "Title": "Bioacoustic Analysis and Publication Tools",
       "Authors@R": "c( person(\"Ed\", \"Baker\",  email = \"ed@ebaker.me.uk\", role = c(\"aut\", \"cre\"), comment=c(ORCID=\"0000-0002-5887-9543\")), person (\"Quentin\", \"Geissman\",  role=\"ctb\"))",
       "Description": "Provides tools for manipulating sound files for bioacoustic analysis, and preparing analyses these for publication. The package validates that values are physically possible wherever feasible.",
       "Depends": [
-        "R (>= 3.4.0)"
+        "R (>= 4.1.0)"
       ],
       "Imports": [
         "methods",
@@ -1787,7 +1787,6 @@
       "License": "GPL-3",
       "Encoding": "UTF-8",
       "LazyData": "true",
-      "RoxygenNote": "7.3.1",
       "Language": "en-GB",
       "Suggests": [
         "av",
@@ -1808,11 +1807,13 @@
       ],
       "VignetteBuilder": "knitr",
       "URL": "https://sonicscrewdriver.ebaker.me.uk, https://github.com/edwbaker/SonicScrewdriveR",
+      "Roxygen": "list(markdown = TRUE)",
       "Config/testthat/edition": "3",
       "BugReports": "https://github.com/edwbaker/SonicScrewdriveR/issues",
       "RdMacros": "Rdpack",
+      "RoxygenNote": "7.3.2",
       "NeedsCompilation": "no",
-      "Author": "Ed Baker [aut, cre] (<https://orcid.org/0000-0002-5887-9543>), Quentin Geissman [ctb]",
+      "Author": "Ed Baker [aut, cre] (ORCID: <https://orcid.org/0000-0002-5887-9543>), Quentin Geissman [ctb]",
       "Maintainer": "Ed Baker <ed@ebaker.me.uk>"
     },
     "sourcetools": {
