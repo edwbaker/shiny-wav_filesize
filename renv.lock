@@ -1765,7 +1765,7 @@
     "sonicscrewdriver": {
       "Package": "sonicscrewdriver",
       "Version": "0.0.7",
-      "Source": "Repository",
+      "Source": "Cellar",
       "Title": "Bioacoustic Analysis and Publication Tools",
       "Authors@R": "c( person(\"Ed\", \"Baker\",  email = \"ed@ebaker.me.uk\", role = c(\"aut\", \"cre\"), comment=c(ORCID=\"0000-0002-5887-9543\")), person (\"Quentin\", \"Geissman\",  role=\"ctb\"))",
       "Description": "Provides tools for manipulating sound files for bioacoustic analysis, and preparing analyses these for publication. The package validates that values are physically possible wherever feasible.",
@@ -1813,8 +1813,7 @@
       "RdMacros": "Rdpack",
       "NeedsCompilation": "no",
       "Author": "Ed Baker [aut, cre] (<https://orcid.org/0000-0002-5887-9543>), Quentin Geissman [ctb]",
-      "Maintainer": "Ed Baker <ed@ebaker.me.uk>",
-      "Repository": "CRAN"
+      "Maintainer": "Ed Baker <ed@ebaker.me.uk>"
     },
     "sourcetools": {
       "Package": "sourcetools",
