@@ -1,12 +1,14 @@
 library(shiny)
 library(sonicscrewdriver)
 library(schite)
+library(shinynhm)
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(
+ui <- nhm_page(
 
-    # Application title
-    titlePanel("WAV file size calculator"),
+    title = "WAV file size calculator",
+    footer = FALSE,
+    subbrand = "NHM Living Labs",
 
     tabsetPanel(
       tabPanel("Calculate file size",
@@ -71,10 +73,11 @@ ui <- fluidPage(
             ),
             # Show a plot of the generated distribution
             mainPanel(
-              verbatimTextOutput("human"),
-              textOutput("bytes"),
-              textOutput("bits"),
-              htmlOutput("cite")
+              nhm_panel(
+                verbatimTextOutput("human"),
+                textOutput("bytes"),
+                textOutput("bits")
+              )
             )
         )
       ),
@@ -82,7 +85,7 @@ ui <- fluidPage(
         "Calculate duration",
         fluid=TRUE,
         sidebarLayout(
-          sidebarPanel(
+            sidebarPanel(
             numericInput(
               "sampleRate2",
               "Sample Rate (Hz)",
@@ -130,13 +133,21 @@ ui <- fluidPage(
               choiceValues = NULL
             )
           ),
-          # Show a plot of the generated distribution
-          mainPanel(
-            verbatimTextOutput("humanTime"),
-            textOutput("seconds"),
-            textOutput("bitrate"),
-            htmlOutput("cite2")
+            # Show a plot of the generated distribution
+            mainPanel(
+              nhm_panel(
+                verbatimTextOutput("humanTime"),
+                textOutput("seconds"),
+                textOutput("bitrate")
+              )
+            )
           )
+      ),
+      tabPanel(
+        "Credits",
+        fluid=TRUE,
+        nhm_panel(
+          htmlOutput("cite")
         )
       )
     )
@@ -154,8 +165,8 @@ server <- function(input, output) {
       )
     * input$repeats)
   bytes <- reactive(convert2bytes(bits()))
-  output$bits <- renderText(paste({bits()}, "bits"))
-  output$bytes <- renderText(paste({bytes()}, "bytes"))
+  output$bits <- renderText(paste(format(bits(), big.mark=","), "bits"))
+  output$bytes <- renderText(paste(format(bytes(), big.mark=","), "bytes"))
   output$human <- renderText({humanBytes(bytes())})
 
   filesize <- reactive(convert2bytes(input$filesize, input$filesizeUnit))
@@ -169,16 +180,15 @@ server <- function(input, output) {
     )
   )
 
-  output$bitrate <- renderText(paste({bitrate()}, "bits/second"))
+  output$bitrate <- renderText(paste(format(bitrate(), big.mark=","), "bits/second"))
   seconds <- reactive(filesize()*8/bitrate())
-  output$seconds <- renderText(paste({seconds()}, "seconds"))
+  output$seconds <- renderText(paste(format(seconds(), big.mark=","), "seconds"))
   output$humanTime <- reactive(humanTime({seconds()}))
 
   cite <- list(
     cite_r_package("sonicscrewdriver")
   )
   output$cite <- citationUI(cite, title="Calculated using SonicScrewdriveR")
-  output$cite2 <- citationUI(cite, title="Calculated using SonicScrewdriveR")
 }
 
 # Run the application
